@@ -7,4 +7,4 @@ It currently relies on the [Runtime](https://docs.oracle.com/javase/7/docs/api/j
 ## Roadmap
 
 - [ ] support multiple process executions with correlation sets
-- [ ] support process kill-signal via process ids
+- [ ] support process termination via process ids

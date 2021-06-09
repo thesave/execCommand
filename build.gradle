@@ -1,0 +1,79 @@
+plugins {
+    id 'java'
+    id 'java-library'
+}
+
+repositories {
+    mavenCentral()
+}
+
+version "0.1"
+def libDir = file( "lib" )
+def releaseDir = file( "release" )
+
+dependencies {
+    implementation fileTree( dir: libDir, include: '*.jar' )
+}
+
+// sourceSets {
+//     doFirst{
+//         libDir.mkdir()
+//         download {
+//             src([
+//                 "https://repo1.maven.org/maven2/org/jolie-lang/jolie/1.10.0/jolie-1.10.0.jar",
+//                 "https://repo1.maven.org/maven2/org/jolie-lang/libjolie/1.10.0/libjolie-1.10.0.jar",
+//                 "https://repo1.maven.org/maven2/org/jolie-lang/jolie-js/1.10.0/jolie-js-1.10.0.jar"
+//             ])
+//             dest libDir
+//             overwrite false
+//         }
+//     }
+// }
+
+compileJava   {
+  sourceCompatibility = '11'
+  targetCompatibility = '11'
+}
+
+jar {
+    enabled = true
+
+    manifest {
+        attributes 'Main-Class': 'ExecCommandService'
+    }
+}
+
+import org.apache.tools.ant.filters.ReplaceTokens
+
+task makeRelease() {
+    tasks.compileJava.mustRunAfter( clean )
+    dependsOn( clean )
+    dependsOn( build )
+    doLast{
+        copy {
+            from( buildDir.toPath().resolve( "libs" ) ){
+                include "execCommand*.jar"
+            }
+            into releaseDir.toPath().resolve( "dist" )
+        }
+        copy {
+            from( libDir ){
+                include "jsdt-core*.jar"
+            }
+            into releaseDir.toPath().resolve( "dist" )
+        }
+        copy {
+            from( projectDir ){
+                include "jpm.json"
+                include "main.ol"
+                include "README.md"
+                filter( ReplaceTokens, tokens: [ VERSION: version ] )
+            }
+            into releaseDir
+        }
+    }
+}
+
+clean.doFirst{
+    delete releaseDir
+}

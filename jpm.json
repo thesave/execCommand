@@ -1,0 +1,23 @@
+{
+   "name": "@jolie/execCommand",
+   "description": "A Jolie library to execute a command with arguments in a separate process.",
+   "collaborators": [
+      "Saverio Giallorenzo"
+   ],
+   "version": "@VERSION@",
+   "license": "LGPL 2.1",
+   "keywords": [
+      "microservices",
+      "jolie",
+      "process execution"
+   ],
+   "scripts": {
+      "jolive": "npx nodemon --exec jolie ./server.ol",
+      "clean": "rm ./hs_err_pid*"
+   },
+   "distJar": "execCommand-@VERSION@.jar",
+   "dependencies": {
+      "mvn": {},
+      "npm": {}
+   }
+}
