@@ -78,9 +78,9 @@ public class ExecCommandService extends JavaService {
 			Process terminatedProcess = onExit.get();
 			executor.shutdown();
 			if ( request.terminationOperation().get().isPresent() ) {
-        sendMessage( CommMessage.createRequest(
-                request.terminationOperation().get().get().root(), "/", Value.create( terminatedProcess.exitValue() ) )
-        );
+				sendMessage( CommMessage.createRequest(
+								request.terminationOperation().get().get().root(), "/", Value.create( terminatedProcess.exitValue() ) )
+				);
 			}
 		} catch ( IOException | ExecutionException | InterruptedException e ) {
 			e.printStackTrace();
