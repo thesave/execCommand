@@ -6,6 +6,7 @@ It currently relies on the [Process](https://docs.oracle.com/javase/7/docs/api/j
 
 ## Usage Example
 
+```jolie
 from @jolie.execCommand.main import ExecCommand
 from console import Console
 
@@ -46,8 +47,8 @@ service main(){
       exit
     }
   }
-
 }
+```
 
 ## Roadmap
 
