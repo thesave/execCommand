@@ -3,7 +3,7 @@
    "description": "",
    "author": "",
    "version": "1.0.0",
-   "license": "ISC",
+   "license": "LGPL 2.1",
    "keywords": [],
    "scripts": {
       "jolive": "npx nodemon --exec jolie ./server.ol",
@@ -11,7 +11,7 @@
    },
    "dependencies": {
       "npm": {
-         "@jolie/tquery": "0.2.3"
+         "@jolie/execCommand": "0.2.3"
       }
    }
 }
