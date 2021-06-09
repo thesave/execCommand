@@ -1,8 +1,8 @@
 {
    "name": "test",
-   "description": "",
-   "author": "",
-   "version": "1.0.0",
+   "description": "A test for the ExecCommand library",
+   "author": "Saverio Giallorenzo",
+   "version": "0.1",
    "license": "LGPL 2.1",
    "keywords": [],
    "scripts": {
