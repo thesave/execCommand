@@ -13,22 +13,10 @@ def releaseDir = file( "release" )
 
 dependencies {
     implementation fileTree( dir: libDir, include: '*.jar' )
+    implementation 'org.jolie-lang:jolie:1.10.4'
+    implementation 'org.jolie-lang:libjolie:1.10.4'
+    implementation 'org.jolie-lang:jolie-cli:1.10.4'
 }
-
-// sourceSets {
-//     doFirst{
-//         libDir.mkdir()
-//         download {
-//             src([
-//                 "https://repo1.maven.org/maven2/org/jolie-lang/jolie/1.10.0/jolie-1.10.0.jar",
-//                 "https://repo1.maven.org/maven2/org/jolie-lang/libjolie/1.10.0/libjolie-1.10.0.jar",
-//                 "https://repo1.maven.org/maven2/org/jolie-lang/jolie-js/1.10.0/jolie-js-1.10.0.jar"
-//             ])
-//             dest libDir
-//             overwrite false
-//         }
-//     }
-// }
 
 compileJava   {
   sourceCompatibility = '11'
